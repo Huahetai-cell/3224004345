@@ -1,0 +1,20 @@
+         110629 function calls in 1.109 seconds
+
+   Ordered by: cumulative time
+   List reduced from 14 to 12 due to restriction <12>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    1.109    1.109 generate_evidence.py:37(_naive_similarity)
+        2    0.576    0.288    0.996    0.498 generate_evidence.py:25(_naive_dice)
+    22399    0.420    0.000    0.420    0.000 {method 'remove' of 'list' objects}
+        2    0.000    0.000    0.058    0.029 paper_checker.py:12(normalize_text)
+        2    0.006    0.003    0.055    0.027 {method 'join' of 'str' objects}
+    26602    0.027    0.000    0.049    0.000 paper_checker.py:15(<genexpr>)
+        4    0.049    0.012    0.049    0.012 generate_evidence.py:21(_ngrams)
+    30800    0.012    0.000    0.012    0.000 {method 'isspace' of 'str' objects}
+    30800    0.011    0.000    0.011    0.000 {built-in method unicodedata.category}
+        2    0.003    0.002    0.003    0.002 {built-in method unicodedata.normalize}
+        2    0.000    0.000    0.000    0.000 {method 'copy' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 {method 'casefold' of 'str' objects}
+
+

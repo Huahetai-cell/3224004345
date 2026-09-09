@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>论文查重性能分析</title>
+<style>
+body { font: 16px/1.55 system-ui, sans-serif; margin: 36px; color: #17202a; }
+h1 { color: #173f5f; } table { border-collapse: collapse; margin: 18px 0; }
+th, td { border: 1px solid #9aa7b2; padding: 8px 14px; text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+.ok { color: #16794a; font-weight: 700; }
+pre { background: #f4f6f7; border: 1px solid #d5d8dc; padding: 14px; font-size: 12px; }
+</style></head><body>
+<h1>论文查重计算模块性能分析</h1>
+<p>环境：Python 3.13 / Windows；分析工具：cProfile、perf_counter、tracemalloc。</p>
+<table><tr><th>实现</th><th>字符数</th><th>结果</th><th>分析耗时（秒）</th><th>峰值内存（MiB）</th></tr>
+<tr><td>优化前：列表查找/删除</td><td>15400</td><td>0.810514</td><td>1.109023</td><td>1.936</td></tr>
+<tr><td>优化后：Counter 交集</td><td>15400</td><td>0.810514</td><td>0.146865</td><td>1.842</td></tr></table>
+<p class="ok">结果保持一致，分析场景提速 7.55 倍。</p>
+<h2>1 MiB 验收</h2>
+<p>字符数 1048576；正常运行耗时 <strong>0.890186 秒</strong>；
+峰值内存 117.150 MiB；结果 0.788236。</p>
+<h2>优化前热点</h2><pre>         110629 function calls in 1.109 seconds
+
+   Ordered by: cumulative time
+   List reduced from 14 to 12 due to restriction &lt;12&gt;
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    1.109    1.109 generate_evidence.py:37(_naive_similarity)
+        2    0.576    0.288    0.996    0.498 generate_evidence.py:25(_naive_dice)
+    22399    0.420    0.000    0.420    0.000 {method &#x27;remove&#x27; of &#x27;list&#x27; objects}
+        2    0.000    0.000    0.058    0.029 paper_checker.py:12(normalize_text)
+        2    0.006    0.003    0.055    0.027 {method &#x27;join&#x27; of &#x27;str&#x27; objects}
+    26602    0.027    0.000    0.049    0.000 paper_checker.py:15(&lt;genexpr&gt;)
+        4    0.049    0.012    0.049    0.012 generate_evidence.py:21(_ngrams)
+    30800    0.012    0.000    0.012    0.000 {method &#x27;isspace&#x27; of &#x27;str&#x27; objects}
+    30800    0.011    0.000    0.011    0.000 {built-in method unicodedata.category}
+        2    0.003    0.002    0.003    0.002 {built-in method unicodedata.normalize}
+        2    0.000    0.000    0.000    0.000 {method &#x27;copy&#x27; of &#x27;list&#x27; objects}
+        2    0.000    0.000    0.000    0.000 {method &#x27;casefold&#x27; of &#x27;str&#x27; objects}
+
+
+</pre>
+<h2>优化后热点</h2><pre>         88295 function calls (88283 primitive calls) in 0.147 seconds
+
+   Ordered by: cumulative time
+   List reduced from 28 to 12 due to restriction &lt;12&gt;
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    0.147    0.147 paper_checker.py:39(calculate_similarity)
+        2    0.000    0.000    0.063    0.032 paper_checker.py:12(normalize_text)
+        2    0.006    0.003    0.060    0.030 {method &#x27;join&#x27; of &#x27;str&#x27; objects}
+        4    0.059    0.015    0.059    0.015 paper_checker.py:23(_ngrams)
+    26602    0.030    0.000    0.054    0.000 paper_checker.py:15(&lt;genexpr&gt;)
+        2    0.000    0.000    0.020    0.010 paper_checker.py:28(_dice_similarity)
+        6    0.000    0.000    0.020    0.003 __init__.py:599(__init__)
+        6    0.000    0.000    0.020    0.003 __init__.py:673(update)
+        4    0.020    0.005    0.020    0.005 {built-in method _collections._count_elements}
+    30800    0.013    0.000    0.013    0.000 {method &#x27;isspace&#x27; of &#x27;str&#x27; objects}
+    30800    0.012    0.000    0.012    0.000 {built-in method unicodedata.category}
+        2    0.003    0.001    0.003    0.001 {built-in method unicodedata.normalize}
+
+
+</pre>
+</body></html>

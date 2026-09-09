@@ -1,0 +1,20 @@
+         88295 function calls (88283 primitive calls) in 0.147 seconds
+
+   Ordered by: cumulative time
+   List reduced from 28 to 12 due to restriction <12>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    0.147    0.147 paper_checker.py:39(calculate_similarity)
+        2    0.000    0.000    0.063    0.032 paper_checker.py:12(normalize_text)
+        2    0.006    0.003    0.060    0.030 {method 'join' of 'str' objects}
+        4    0.059    0.015    0.059    0.015 paper_checker.py:23(_ngrams)
+    26602    0.030    0.000    0.054    0.000 paper_checker.py:15(<genexpr>)
+        2    0.000    0.000    0.020    0.010 paper_checker.py:28(_dice_similarity)
+        6    0.000    0.000    0.020    0.003 __init__.py:599(__init__)
+        6    0.000    0.000    0.020    0.003 __init__.py:673(update)
+        4    0.020    0.005    0.020    0.005 {built-in method _collections._count_elements}
+    30800    0.013    0.000    0.013    0.000 {method 'isspace' of 'str' objects}
+    30800    0.012    0.000    0.012    0.000 {built-in method unicodedata.category}
+        2    0.003    0.001    0.003    0.001 {built-in method unicodedata.normalize}
+
+

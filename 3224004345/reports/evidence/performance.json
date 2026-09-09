@@ -1,0 +1,20 @@
+{
+  "profile_characters": 15400,
+  "before": {
+    "score": 0.8105136516002391,
+    "seconds_with_profiler": 1.1090228999964893,
+    "peak_mib": 1.9359245300292969
+  },
+  "after": {
+    "score": 0.8105136516002391,
+    "seconds_with_profiler": 0.14686549990437925,
+    "peak_mib": 1.8424787521362305
+  },
+  "large_input": {
+    "characters": 1048576,
+    "score": 0.7882360702568318,
+    "runtime_seconds": 0.8901863000355661,
+    "peak_mib": 117.14997863769531
+  },
+  "speedup": 7.55128264104605
+}
