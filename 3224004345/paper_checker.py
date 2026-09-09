@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import sys
 import unicodedata
+from collections import Counter
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 
 def normalize_text(text: str) -> str:
@@ -25,16 +26,13 @@ def _ngrams(text: str, size: int) -> list[str]:
 
 
 def _dice_similarity(left: list[str], right: list[str]) -> float:
-    """用朴素匹配计算两个多重集的 Sørensen-Dice 系数。"""
+    """在线性时间内计算两个多重集的 Sørensen-Dice 系数。"""
     if not left and not right:
         return 1.0
 
-    unmatched = right.copy()
-    overlap = 0
-    for item in left:
-        if item in unmatched:
-            unmatched.remove(item)
-            overlap += 1
+    left_counts = Counter(left)
+    right_counts = Counter(right)
+    overlap = sum((left_counts & right_counts).values())
     return 2.0 * overlap / (len(left) + len(right))
 
 
@@ -102,4 +100,3 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"错误：{error}", file=sys.stderr)
         return 1
     return 0
-
