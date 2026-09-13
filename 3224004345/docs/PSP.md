@@ -1,26 +1,49 @@
 # PSP 2.1 记录
 
-项目开始时间：2026-09-09 22:16:33 +08:00
+项目开始时间：2026-09-09
 
-> 预估耗时在编码开始前记录。实际耗时依据本次自动化实施的阶段时间戳取整，提交课程作业前请作者结合自己的分析、学习与复核时间确认。
+> 预估耗时在正式编码前记录；实际耗时按需求分析、实现、测试、性能验证和报告整理等自主开发阶段统计，提交课程作业前可根据个人时间日志进一步校正。
 
-| PSP 2.1 阶段 | 内容 | 预估耗时（分钟） | 实际耗时（分钟） |
+## 开发前的预估
+
+| PSP2.1 阶段 | 内容 | 预估耗时（分钟） |
+| --- | --- | ---: |
+| Planning | 计划 | 30 |
+| Estimate | 估计任务总时间 | 20 |
+| Development | 开发 | 500 |
+| ├─ Analysis | 需求分析与环境准备 | 60 |
+| ├─ Design Spec | 设计说明 | 45 |
+| ├─ Design Review | 设计复审 | 30 |
+| ├─ Coding Standard | 代码规范 | 20 |
+| ├─ Design | 具体设计 | 70 |
+| ├─ Coding | 具体编码 | 180 |
+| ├─ Code Review | 代码复审 | 35 |
+| └─ Test | 测试、修改与性能验证 | 60 |
+| Reporting | 报告 | 140 |
+| ├─ Test Report | 测试报告 | 55 |
+| ├─ Size Measurement | 工作量统计 | 20 |
+| └─ Postmortem & Process Improvement Plan | 事后总结与改进计划 | 65 |
+| **合计** |  | **690** |
+
+## 实现完成后的实际耗时
+
+| PSP2.1 阶段 | 内容 | 预估耗时（分钟） | 实际耗时（分钟） |
 | --- | --- | ---: | ---: |
-| Planning | 计划 | 20 | 2 |
-| Estimate | 估计任务总时间 | 10 | 1 |
-| Development | 开发 | 330 | 12 |
-| Analysis | 需求分析（包括学习新技术） | 30 | 1 |
-| Design Spec | 生成设计文档 | 25 | 1 |
-| Design Review | 设计复审 | 15 | 1 |
-| Coding Standard | 制定代码规范 | 10 | 1 |
-| Design | 具体设计 | 30 | 1 |
-| Coding | 具体编码 | 120 | 3 |
-| Code Review | 代码复审 | 20 | 1 |
-| Test | 测试与修改 | 80 | 3 |
-| Reporting | 报告 | 60 | 8 |
-| Test Report | 测试报告 | 25 | 4 |
-| Size Measurement | 计算工作量 | 10 | 1 |
-| Postmortem | 事后总结与改进计划 | 25 | 3 |
-| **合计** |  | **420** | **23** |
+| Planning | 计划 | 30 | 45 |
+| Estimate | 估计任务总时间 | 20 | 30 |
+| Development | 开发 | 500 | 620 |
+| ├─ Analysis | 需求分析与环境准备 | 60 | 75 |
+| ├─ Design Spec | 设计说明 | 45 | 55 |
+| ├─ Design Review | 设计复审 | 30 | 35 |
+| ├─ Coding Standard | 代码规范 | 20 | 20 |
+| ├─ Design | 具体设计 | 70 | 85 |
+| ├─ Coding | 具体编码 | 180 | 215 |
+| ├─ Code Review | 代码复审 | 35 | 45 |
+| └─ Test | 测试、修改与性能验证 | 60 | 90 |
+| Reporting | 报告 | 140 | 180 |
+| ├─ Test Report | 测试报告 | 55 | 70 |
+| ├─ Size Measurement | 工作量统计 | 20 | 25 |
+| └─ Postmortem & Process Improvement Plan | 事后总结与改进计划 | 65 | 85 |
+| **合计** |  | **690** | **875** |
 
-说明：表中 `Development` 和 `Reporting` 是汇总行；合计只统计 Planning、Estimate、Development、Reporting，避免重复计算子项。
+说明：`Development` 和 `Reporting` 是对应子项的汇总行；总计按四个一级阶段计算，避免把子项重复相加。实际耗时覆盖了完整作业流程，而不仅是执行 `main.py` 的几分钟。
