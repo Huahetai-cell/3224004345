@@ -65,6 +65,16 @@ python -m tools.generate_evidence
 
 完整数据和截图见 [docs/性能分析.md](docs/性能分析.md)。
 
+## 老师测试数据
+
+如果拿到老师提供的压缩包，可直接运行：
+
+```powershell
+.\tools\run_teacher_samples.ps1 -ZipPath "D:\BaiduNetdiskDownload\测试文本.zip"
+```
+
+验收记录和数据完整性检查见 [docs/老师测试数据验收.md](docs/老师测试数据验收.md)。
+
 ## 项目结构
 
 ```text
@@ -82,4 +92,3 @@ python -m tools.generate_evidence
 ## 限制
 
 题目没有规定唯一的重复率算法，也没有提供18个隐藏测试点的期望结果。本项目选择确定、可解释的字符 n-gram 方法；现有验收结论来自需求样例、自建测试和本地性能基准。
-

@@ -5,4 +5,5 @@ htmlcov/
 .ruff_cache/
 .pytest_cache/
 reports/generated/
-
+manual_samples/*_answer.txt
+manual_samples/teacher-extracted/
